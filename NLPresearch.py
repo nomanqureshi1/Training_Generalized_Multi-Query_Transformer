@@ -51,7 +51,7 @@ def evaluate_model(model_name, dataset_name):
         ).to(device)
         tokenizer = T5Tokenizer.from_pretrained(model_name)
     except Exception as e:
-        print(f"❌ Error loading model {model_name}: {e}")
+        print(f" Error loading model {model_name}: {e}")
         return None, None
 
     dataset_info = datasets_info[dataset_name]
@@ -66,7 +66,7 @@ def evaluate_model(model_name, dataset_name):
             streaming=True
         )
     except Exception as e:
-        print(f"❌ Error loading dataset {dataset_name}: {e}")
+        print(f" Error loading dataset {dataset_name}: {e}")
         return None, None
 
     # Retrieve only one sample from the streamed dataset
@@ -125,5 +125,5 @@ for dataset_name in datasets_info.keys():
 
 df = pd.DataFrame(results)
 df.to_csv("evaluation_results.csv", index=False)
-print("\n✅ Results saved to evaluation_results.csv")
+print("\n Results saved to evaluation_results.csv")
 print(df)
